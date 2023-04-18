@@ -21,7 +21,10 @@ public class ValidationAop {
 	private void pointCut() {}
 	@Around("pointCut()")
 	public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
-		
+		// 들어오는 값들은 들고있음
+		// bindingresult는 SignupReqDto에 정교식에 안맞는 에러가 bindingresult 클래스로
+		// joinPoint에 넘어오고 binding result클래스인것들은 넣어주고
+		// errorMap에 넣어준뒤 customException에 실행 시켜준다.
 		Object[] args = joinPoint.getArgs();
 		BindingResult bindingResult = null;
 		for(Object arg : args) {
